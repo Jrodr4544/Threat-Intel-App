@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221012212810) do
+ActiveRecord::Schema.define(version: 20221014000455) do
 
   create_table "indicators", force: :cascade do |t|
     t.string "value"
@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(version: 20221012212810) do
   create_table "pulses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.text "description"
     t.string "author_name"
     t.string "tlp"
     t.string "adversary"
+    t.string "name"
+    t.index ["name"], name: "index_pulses_on_name", unique: true
   end
 
   create_table "references", force: :cascade do |t|
