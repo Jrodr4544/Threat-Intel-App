@@ -1,4 +1,5 @@
 class Pulse < ApplicationRecord
+  validates :name, uniqueness: true
   has_many :indicators
   has_many :tags
   has_many :targeted_countries
