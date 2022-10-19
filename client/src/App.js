@@ -1,4 +1,6 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -12,9 +14,9 @@ import About from './components/About';
 function App() {
   return (
     <div className="App">
-
+	
 	  <Router>
-	 	<Navigation /> 
+	  <Navigation />
 	  	<Routes>
 	  		<Route path='/pulses' element={<PulsesContainer />} />
 	  		<Route path='/about' element={<About />} />
