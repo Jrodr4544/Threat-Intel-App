@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { fetchPulses } from '../actions/index'
+import React, { Component } from 'react';
+import { fetchPulses } from '../actions/index';
+import { connect } from 'react-redux';
 
 class PulsesContainer extends Component {
 	constructor(props) {
@@ -19,4 +20,4 @@ class PulsesContainer extends Component {
 	}
 }
 
-export default (PulsesContainer);
+export default connect(null, { fetchPulses })(PulsesContainer);
