@@ -10,7 +10,7 @@ export default (state = {loading: false, pulses: []}, action) => {
         debugger
         console.log('FETCHING_PULSES')
         console.log(action)
-            return { ...state, patterns: action.pulses }
+            return { ...state, pulses: action.pulses }
 
         case "FETCH_ERROR_GENERATED":
         debugger
