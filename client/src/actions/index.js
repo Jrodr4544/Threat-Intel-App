@@ -20,7 +20,7 @@ export const fetchPulses = () => {
     try {
       dispatch({ type: 'LOADING_PULSES' }) 
 
-      const request = await fetch('http://localhost:3000/api/');
+      const request = await fetch('http://localhost:3000/api/pulses');
       const pulses = await request.json();
 
       return onSuccess(pulses);
