@@ -52,12 +52,20 @@ class Api::PulsesController < ApplicationController
           end
         end
 
+        if pulse['references'].length > 0
+          pulse['references'].each do |reference|
+            object.references << Reference.find_or_create_by!(
+              resource: reference 
+            )
+          end
+        end
+
         object.save!
     end
     
     @pulses = Pulse.all
 
-    render :json => @pulses, include: ['indicators', 'tags', 'malware_families', 'industries']
+    render :json => @pulses, include: ['indicators', 'tags', 'malware_families', 'industries', 'references']
   end
 
 end
