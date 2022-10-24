@@ -17,6 +17,19 @@ const PulseList = ({pulses}) => {
 			<Card.Subtitle className="mb-2 text-muted">TLP: { pulse.tlp }</Card.Subtitle>
 			<Card.Subtitle className="mb-2 text-muted">Adversary: { (pulse.adversary === "") ? "None" : pulse.adversary }</Card.Subtitle>
 			{/* Need to add indicators, industries, malware_families, references, and tags */}
+			<Card.Title>References:</Card.Title>
+
+			{
+				(pulse.references.length > 0) ?
+					pulse.references.map( reference => {
+						return (
+								<Card.Link href="#" key={reference.id}>{reference.resource}</Card.Link>
+						)
+					})
+				:
+						<p>None</p>
+			}	
+
 			<Card.Link href="#">Card Link</Card.Link>
 			<Card.Link href="#">Another Link</Card.Link>
 		      </Card.Body>
