@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-
+import Accordion from 'react-bootstrap/Accordion';
 
 const PulseList = ({pulses}) => {
 	
@@ -18,30 +18,37 @@ const PulseList = ({pulses}) => {
 			<Card.Subtitle className="mb-2 text-muted">Adversary: { (pulse.adversary === "") ? "None" : pulse.adversary }</Card.Subtitle>
 			{/* Need to add indicators, industries, malware_families, references, and tags */}
 
-			<div class="flex-container">Indicators:
+		   	<Accordion flush>
+		      		<Accordion.Item eventKey="0">
+		        		<Accordion.Header>Indicators:</Accordion.Header>
+		        		<Accordion.Body>
+					<div class="flex-container">
 			{
 				(pulse.indicators.length > 0) ?
 					pulse.indicators.map( indicator => {
 						return (
 							<div>
-								<Card.Text className="indicators" href="#" key={indicator.id}>{indicator.category}: {indicator.value}</Card.Text>
+								<Card.Text className="indicators" href="#" key={ indicator.id }>{ indicator.category }: { indicator.value }</Card.Text>
 							</div>
 						)
 					})
 				:
 					null
 			}	
-			</div>
+						</div>
+		        		</Accordion.Body>
+		      		</Accordion.Item>
+		    	</Accordion>
 
 			{/* Pulse References */}
 
 
-			<ul>{(pulse.references.length > 0) ? "References:" : null}
+			<ul>{ (pulse.references.length > 0) ? "References:" : null }
 			{
 				(pulse.references.length > 0) ?
 					pulse.references.map( reference => {
 						return (
-								<li><Card.Link href="#" key={reference.id}>{reference.resource}</Card.Link></li>
+								<li><Card.Link href="#" key={ reference.id }>{ reference.resource }</Card.Link></li>
 						)
 					})
 				:
