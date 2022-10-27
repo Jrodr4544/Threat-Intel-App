@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 class FilterContainer extends Component {
   constructor(props) {
@@ -37,6 +38,25 @@ class FilterContainer extends Component {
 
     return (
       <div>
+		<h1>FilterContainer</h1>
+
+	<Form>
+	      <Form.Group className="mb-3" controlId="formBasicEmail">
+		<Form.Label>Filter Pulses</Form.Label>
+		<Form.Control name="inputFilter" type="text" placeholder="Enter text" value={this.state.inputFilter} onChange={this.handleInputChange}/>
+		<Form.Text className="text-muted">
+	    		Random Text Here
+		</Form.Text>
+	      </Form.Group>
+		
+	      <Form.Group>
+		<Form.Check type="checkbox" label="Check me out" />
+	      </Form.Group>
+	      <Button variant="primary" type="submit">
+		Submit
+	      </Button>
+	</Form>
+	    {/*
         <form>
           <FormGroup>
             <InputGroup>
@@ -47,7 +67,8 @@ class FilterContainer extends Component {
             </InputGroup>
           </FormGroup>
         </form>
-	    {/*
+
+
         {this.props.filters.data_sources !== undefined ? (
 
           <div name='filters'>
