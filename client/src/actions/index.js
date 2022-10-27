@@ -5,8 +5,20 @@ export const fetchPulses = () => {
     function onSuccess(pulses) {
       let filters = {};
       debugger
+	
+      // Ensuring that there are unique tags only
+      filters.tags = pulses.map(pulse =>
+        pulse.tags)
+        .flat()
+	.map(tag => tag.title)
+        .reduce((result, nextItem) =>
+          result.includes(nextItem) ?
+          result :
+          result.concat(nextItem),
+        []);
+
       dispatch({ type: 'FETCH_PULSES', pulses });
-      //dispatch({ type: 'SET_FILTERS', filters })
+      dispatch({ type: 'SET_FILTERS', filters })
       //  debugger
       return pulses;
     }
