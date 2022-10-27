@@ -3,25 +3,29 @@ import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import TagFilter from '../components/TagFilter'
+
 class FilterContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputFilter: ''
+      inputFilter: '',
+      tagFilter: ''
+
 //      datasourceFilter: '',
 //      platformFilter: ''
     };
   }
 
-//  handleOnFilterChange = event => {
-    // debugger
-//    this.setState({
-//      ...this.state,
-//      [event.target.name]: event.target.value
-//    }, () => {
-//      this.props.filterPulses(this.state);
-//    });
-//  }
+  handleOnFilterChange = event => {
+     debugger
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value
+    }, () => {
+      this.props.filterPulses(this.state);
+    });
+  }
 
   handleInputChange = event => {
     // debugger
@@ -56,23 +60,18 @@ class FilterContainer extends Component {
 		Submit
 	      </Button>
 	</Form>
+	    
+          <div name='filters'>
+            <TagFilter tags={this.props.tags} changeFilter={this.handleOnFilterChange} />
+          </div>
+
 	    {/*
-        <form>
-          <FormGroup>
-            <InputGroup>
-              <InputGroup.Button>
-                <Button type='submit' value="Filter Pulses">Filter Pulses</Button>
-              </InputGroup.Button>
-              <FormControl name='inputFilter' value={this.state.inputFilter} type="text" onChange={this.handleInputChange} />
-            </InputGroup>
-          </FormGroup>
-        </form>
 
 
         {this.props.filters.data_sources !== undefined ? (
 
           <div name='filters'>
-            <DatasourceFilter datasources={this.props.filters.data_sources} changeFilter={this.handleOnFilterChange} />
+            <TagFilter tags={this.props.filters.tags} changeFilter={this.handleOnFilterChange} />
             <PlatformFilter platforms={this.props.filters.platforms} changeFilter={this.handleOnFilterChange} />
           </div>
 
@@ -91,9 +90,9 @@ class FilterContainer extends Component {
 };
 
 const mapStateToProps = state => {
-  //  debugger
+    debugger
   return {
-    filters: state.filters
+    tags: state.filters.tags
   };
 }
 
