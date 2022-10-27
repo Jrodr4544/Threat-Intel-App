@@ -3,6 +3,7 @@ import { fetchPulses } from '../actions/index';
 import { connect } from 'react-redux';
 
 import PulseList from '../components/PulseList';
+import FilterContainer from './FilterContainer';
 
 class PulsesContainer extends Component {
 	constructor(props) {
@@ -30,6 +31,7 @@ class PulsesContainer extends Component {
 		return (
 			<div>
 				<h1>PulsesContainer</h1>
+				<FilterContainer />
 				<PulseList 
 					pulses={ this.state.pulses }
 				/>
