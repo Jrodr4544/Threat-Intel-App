@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import TagFilter from '../components/TagFilter'
+import TagFilter from '../components/filters/tagFilter'
 
 class FilterContainer extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class FilterContainer extends Component {
   }
 
   handleOnFilterChange = event => {
-     debugger
+     //debugger
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
@@ -42,7 +42,7 @@ class FilterContainer extends Component {
 
     return (
       <div>
-		<h1>FilterContainer</h1>
+	    {/* FilterContainer */}
 
 	<Form>
 	      <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -66,28 +66,11 @@ class FilterContainer extends Component {
 		    <TagFilter tags={this.props.tags} changeFilter={this.handleOnFilterChange} />
 		  </div>
 	    ):(
-		    <div name='filters'>
-			Filters
-		    </div>
+		  <div name='filters'>
+		    Filters
+		  </div>
 	    )}
 
-	    {/*
-
-
-        {this.props.filters.data_sources !== undefined ? (
-
-          <div name='filters'>
-            <TagFilter tags={this.props.filters.tags} changeFilter={this.handleOnFilterChange} />
-            <PlatformFilter platforms={this.props.filters.platforms} changeFilter={this.handleOnFilterChange} />
-          </div>
-
-        ) : (
-            <div>
-              Filters
-            </div>
-
-          )}
-	  */}
         <br></br>
 
       </div>
