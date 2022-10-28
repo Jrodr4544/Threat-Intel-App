@@ -60,10 +60,16 @@ class FilterContainer extends Component {
 		Submit
 	      </Button>
 	</Form>
-	    
-          <div name='filters'>
-            <TagFilter tags={this.props.tags} changeFilter={this.handleOnFilterChange} />
-          </div>
+
+	    { this.props.tags !== undefined ? (
+		  <div name='filters'>
+		    <TagFilter tags={this.props.tags} changeFilter={this.handleOnFilterChange} />
+		  </div>
+	    ):(
+		    <div name='filters'>
+			Filters
+		    </div>
+	    )}
 
 	    {/*
 
