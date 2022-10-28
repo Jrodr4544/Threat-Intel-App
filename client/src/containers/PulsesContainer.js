@@ -32,15 +32,14 @@ class PulsesContainer extends Component {
 
 	handleFilterPulses(filter) {
 	    //debugger
-	    // Filter based on tags, and input 
-	    //const filterPulses = this.state.pulses.filter(pulse =>
-	     // (pulse.tags.filter(tag => tag.includes(filter.tag)).length > 1) &&
+	    // Filter based on tags 
+	    const filteredPulses = this.state.pulses.filter(pulse =>
+	      (pulse.tags.filter(tag => tag.title.includes(filter['tagFilter'])).length >= 1) //&&
 	      //(pulse.x_mitre_platforms.filter(platform => platform.includes(filter.platformFilter)).length > 0)
-	    //);
+	    );
 
-	    //const result = filterPulses.filter(pulse => Object.values(pulse).flat().join('').includes(filter['inputFilter']));
-
-	    const result = this.state.pulses.filter(pulse => Object.values(pulse).flat().join('').includes(filter['inputFilter']));
+	    // Filtering filtered pulses based on user input
+	    const result = filteredPulses.filter(pulse => Object.values(pulse).flat().join('').includes(filter['inputFilter']));
 		
 	    return this.setState({
 	      ...this.state,
@@ -53,7 +52,7 @@ class PulsesContainer extends Component {
 		
 		return (
 			<div>
-				<h1>PulsesContainer</h1>
+				{/* PulsesContainer */}
 
 				<FilterContainer 
 					filterPulses={ this.handleFilterPulses }
