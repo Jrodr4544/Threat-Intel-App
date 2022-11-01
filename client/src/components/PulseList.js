@@ -18,6 +18,30 @@ const PulseList = ({pulses}) => {
 			<Card.Subtitle className="mb-2 text-muted">Adversary: { (pulse.adversary === "") ? "None" : pulse.adversary }</Card.Subtitle>
 			{/* Need to add indicators, industries, malware_families, references, and tags */}
 
+
+		   	<Accordion flush>
+		      		<Accordion.Item eventKey="0">
+		        		<Accordion.Header>Targeted Countries:</Accordion.Header>
+		        		<Accordion.Body>
+						<div class="flex-container">
+			{
+				(pulse.targeted_countries.length > 0) ?
+					pulse.targeted_countries.map( country => {
+						return (
+							<div>
+								<Card.Text href="#" key={ country.id }>{ country.name }</Card.Text>
+							</div>
+						)
+					})
+				:
+							<div>None</div>
+			}	
+						</div>
+		        		</Accordion.Body>
+		      		</Accordion.Item>
+		    	</Accordion>
+
+
 			{/* Industries */}
 
 
