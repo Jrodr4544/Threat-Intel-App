@@ -56,9 +56,6 @@ class FilterContainer extends Component {
 	      <Form.Group>
 		<Form.Check type="checkbox" label="Check me out" />
 	      </Form.Group>
-	      <Button variant="primary" type="submit">
-		Submit
-	      </Button>
 	</Form>
 
 	    { this.props.tags !== undefined ? (
