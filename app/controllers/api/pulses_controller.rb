@@ -65,7 +65,7 @@ class Api::PulsesController < ApplicationController
     
     @pulses = Pulse.all
 
-    render :json => @pulses, include: ['indicators', 'tags', 'malware_families', 'industries', 'references']
+    render :json => @pulses, include: ['indicators', 'tags', 'malware_families', 'industries', 'references', 'targeted_countries']
   end
 
 end
