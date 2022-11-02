@@ -120,12 +120,12 @@ const PulseList = ({pulses}) => {
 			{/* Pulse References */}
 
 
-			<ul>{ (pulse.references.length > 0) ? "References:" : null }
+			<ul class="left">{ (pulse.references.length > 0) ? "References:" : null }
 			{
 				(pulse.references.length > 0) ?
 					pulse.references.map( reference => {
 						return (
-								<li><Card.Link href="#" key={ reference.id }>{ reference.resource }</Card.Link></li>
+								<li>Source: <Card.Link href={ reference.resource } key={ reference.id }>{ reference.resource }</Card.Link></li>
 						)
 					})
 				:
