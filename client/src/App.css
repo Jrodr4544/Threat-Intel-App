@@ -37,6 +37,9 @@
   }
 }
 
+.left {
+	text-align: left;
+}
 
 .flex-container {
 	display: flex;
