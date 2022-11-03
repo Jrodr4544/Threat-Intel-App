@@ -9,7 +9,7 @@ const PulseList = ({pulses}) => {
 		    <Card key={ pulse.id }>
 		      <Card.Body>
 			<Card.Title>{ pulse.name }</Card.Title>
-			<Card.Subtitle className="mb-2 text-muted">Author: { pulse.author_name }</Card.Subtitle>
+			<Card.Subtitle className="mb-2 text-muted">Created: { new Date(pulse.created_at).toLocaleDateString("en-US") } |  Author: { pulse.author_name }</Card.Subtitle>
 			<Card.Text>
 				{ pulse.description }
 			</Card.Text>
