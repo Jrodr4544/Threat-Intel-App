@@ -5,28 +5,29 @@ import {Link} from 'react-router-dom';
 
 function Navigation() {
 	  return (
-		  {/* find template example in react-bootstrap with collapsable navbar and implement here */}
-			<Navbar expand="lg" bg="dark" variant="dark">
-		  		<Container>
-		  	    <Navbar.Brand>
+
+		<Navbar bg="dark" variant="dark" expand="lg">
+		  <Container>
+			<Navbar.Brand>
 		  		<Nav.Link as={Link} to='/'>
 		  			Threat-Intel-App
 		  		</Nav.Link>
-		  	    </Navbar.Brand>
-		            <Nav className="me-auto">
+		        </Navbar.Brand>
+		      	<Navbar.Toggle aria-controls="basic-navbar-nav"/> 
+			<Navbar.Collapse id="basic-navbar-nav">
+			  <Nav className="me-auto">
 		              <Nav.Link as={Link} to="/pulses">Pulses</Nav.Link>
 		              <Nav.Link as={Link} to="/about">About</Nav.Link>
-		            </Nav>
-
-			    <Nav>
-		              <Nav.Link href="#deets">More deets</Nav.Link>
-		              <Nav.Link href="#memes">
-		                Dank memes
-		              </Nav.Link>
-		            </Nav>
-		  		</Container>
-		        </Navbar>
+			  </Nav>
+			  
+			  <Nav>
+			    <Nav.Link href="#test">Test</Nav.Link>
+			  </Nav>
+			</Navbar.Collapse>
+		  </Container>
+	    	 </Navbar>
 		    );
 }
 
 export default Navigation;
+
