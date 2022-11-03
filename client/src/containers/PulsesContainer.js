@@ -34,10 +34,10 @@ class PulsesContainer extends Component {
 	    //debugger
 	    // Filter based on tags 
 	    const filteredPulses = this.state.pulses.filter(pulse =>
-	      (pulse.tags.filter(tag => tag.title.includes(filter['tagFilter'])).length >= 1) //&&
+	      (pulse.tags.filter(tag => tag.title.includes(filter['tagFilter'])).length >= 0) //&&
 	      //(pulse.x_mitre_platforms.filter(platform => platform.includes(filter.platformFilter)).length > 0)
 	    );
-
+		//debugger
 	    // Filtering filtered pulses based on user input
 	    const result = filteredPulses.filter(pulse => Object.values(pulse).flat().join('').includes(filter['inputFilter']));
 		
