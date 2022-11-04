@@ -44,6 +44,8 @@ class FilterContainer extends Component {
       <div>
 	    {/* FilterContainer */}
 
+	    {/* Add functionality to sort pulses on created date */}
+
 	<Form>
 	      <Form.Group className="mb-3" controlId="formBasicEmail">
 		<Form.Label>Filter Pulses</Form.Label>
@@ -52,10 +54,15 @@ class FilterContainer extends Component {
 	    		Random Text Here
 		</Form.Text>
 	      </Form.Group>
-		
-	      <Form.Group>
-		<Form.Check type="checkbox" label="Check me out" />
-	      </Form.Group>
+	
+
+	      <input type="checkbox" id="checkbox1" name="checkbox" onClick={ this.props.sortPulses } ></input>
+	      <label for="checkbox1"> 
+		<Form.Text className="text-muted">
+	    		Sort on date created		
+	        </Form.Text>
+	      </label>
+
 	</Form>
 
 	    { this.props.tags !== undefined ? (
