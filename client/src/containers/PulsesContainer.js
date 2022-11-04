@@ -10,9 +10,11 @@ class PulsesContainer extends Component {
 		super(props);
 
     		this.handleFilterPulses = this.handleFilterPulses.bind(this);
+    		this.handleSortOnDateCreated = this.handleSortOnDateCreated.bind(this);
 		this.state = {
 			pulses: [],
-		filteredPulses: []
+		filteredPulses: [],
+	             sortOrder: "ASCENDING"
 		}
 	
 	}
@@ -48,6 +50,28 @@ class PulsesContainer extends Component {
 
 	}
 
+	handleSortOnDateCreated() {
+		debugger
+		{/* sorting only works first time user clicks checkbox and triggers this function, need to fix. */}
+	    const sortPulsesAscending = this.state.pulses.sort((a,b) => new Date(a.created_at) - new Date(b.created_at)) 
+	    const sortPulsesDescending = this.state.pulses.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)) 
+	    
+	    return this.state.sortOrder === "ASCENDING" ? 
+		    this.setState({
+		      ...this.state,
+		      filteredPulses: sortPulsesDescending,
+	          	   sortOrder: "DESCENDING"
+		    })
+		:
+		    this.setState({
+		      ...this.state,
+		      filteredPulses: sortPulsesAscending,
+	          	   sortOrder: "ASCENDING"
+		    })
+		
+
+	}
+
 	render() {
 		
 		return (
@@ -55,6 +79,7 @@ class PulsesContainer extends Component {
 				{/* PulsesContainer */}
 
 				<FilterContainer 
+					sortPulses={ this.handleSortOnDateCreated }
 					filterPulses={ this.handleFilterPulses }
 				/>
 
