@@ -10,6 +10,7 @@ import {
 import PulsesContainer from './containers/PulsesContainer';
 import Navigation from './components/Navigation';
 import About from './components/About';
+import Index from './components/Index';
 
 function App() {
   return (
@@ -20,9 +21,11 @@ function App() {
 	  	<Routes>
 	  		<Route path='/pulses' element={<PulsesContainer />} />
 	  		<Route path='/about' element={<About />} />
-	  		<Route exact path='/' render={() => (
+	  		<Route exact path='/' element={<Index />} />
+	  {/* <Route exact path='/' render={() => (
 				<div className='App'><h1>Welcome</h1></div>
 			)} />
+			*/}
 	  	</Routes>
 	  </Router>
     </div>
