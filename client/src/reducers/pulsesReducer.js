@@ -1,4 +1,4 @@
-export default (state = {loading: false, pulses: []}, action) => {
+export default (state = {loading: false}, action) => {
 
     switch (action.type) {
         case "LOADING_PULSES":
