@@ -14,7 +14,7 @@ class PulsesContainer extends Component {
 		this.state = {
 			pulses: [],
 		filteredPulses: [],
-	             sortOrder: "ASCENDING"
+	          sortAscOrder: true
 		}
 	
 	}
@@ -52,27 +52,19 @@ class PulsesContainer extends Component {
 
 	handleSortOnDateCreated() {
 		debugger
-		{/* sorting only works first time user clicks checkbox and triggers this function, need to fix. */}
-	    const sortPulsesAscending = this.state.pulses.sort((a,b) => new Date(a.created_at) - new Date(b.created_at)) 
-	    const sortPulsesDescending = this.state.pulses.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)) 
-	    
-	    return this.state.sortOrder === "ASCENDING" ? 
-		    this.setState({
-		      ...this.state,
-		      filteredPulses: sortPulsesDescending,
-	          	   sortOrder: "DESCENDING"
-		    })
-		:
-		    this.setState({
-		      ...this.state,
-		      filteredPulses: sortPulsesAscending,
-	          	   sortOrder: "ASCENDING"
-		    })
-		
+	    this.setState(state => ({
+		sortAscOrder: !state.sortAscOrder
+	    }))
 
 	}
 
 	render() {
+		debugger
+		const pulses = this.state.sortAscOrder === true ? 
+			this.props.pulses.sort((a,b) => new Date(a.created_at) - new Date(b.created_at)) 
+		:
+			this.props.pulses.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)) 
+
 		
 		return (
 			<div>
@@ -84,11 +76,20 @@ class PulsesContainer extends Component {
 				/>
 
 				<PulseList 
-					pulses={ this.state.filteredPulses }
+					pulses={ pulses }
 				/>
 			</div>
 		)
 	}
 }
 
-export default connect(null, { fetchPulses })(PulsesContainer);
+const mapStateToProps = (state) => {
+	debugger
+	let pulses = state.pulses.pulses !== undefined ? state.pulses.pulses : []
+
+
+	return { pulses }
+
+}
+
+export default connect( mapStateToProps , { fetchPulses })(PulsesContainer);
