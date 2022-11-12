@@ -52,19 +52,19 @@ class PulsesContainer extends Component {
 
 	handleSortOnDateCreated() {
 		debugger
+
 	    this.setState(state => ({
+	      filteredPulses: this.state.sortAscOrder === true ? 
+					this.state.filteredPulses.sort((a,b) => new Date(b.created_at) - new Date(a.created_at))
+				:
+					this.state.filteredPulses.sort((a,b) => new Date(a.created_at) - new Date(b.created_at)),
 		sortAscOrder: !state.sortAscOrder
 	    }))
 
 	}
 
 	render() {
-		debugger
-		const pulses = this.state.sortAscOrder === true ? 
-			this.props.pulses.sort((a,b) => new Date(a.created_at) - new Date(b.created_at)) 
-		:
-			this.props.pulses.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)) 
-
+		//debugger
 		
 		return (
 			<div>
@@ -76,20 +76,20 @@ class PulsesContainer extends Component {
 				/>
 
 				<PulseList 
-					pulses={ pulses }
+					pulses={ this.state.filteredPulses }
 				/>
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = (state) => {
-	debugger
-	let pulses = state.pulses.pulses !== undefined ? state.pulses.pulses : []
+//const mapstatetoprops = (state) => {
+//	debugger
+//	let pulses = state.pulses.pulses !== undefined ? state.pulses.pulses : []
+//
+//
+//	return { pulses }
+//
+//}
 
-
-	return { pulses }
-
-}
-
-export default connect( mapStateToProps , { fetchPulses })(PulsesContainer);
+export default connect( null , { fetchPulses })(PulsesContainer);
