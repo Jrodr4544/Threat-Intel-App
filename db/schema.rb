@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20221014000455) do
     t.string "tlp"
     t.string "adversary"
     t.string "name"
-    t.index ["name"], name: "index_pulses_on_name", unique: true
   end
 
   create_table "references", force: :cascade do |t|
