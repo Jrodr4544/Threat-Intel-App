@@ -24,3 +24,6 @@
 
 # Ignore configuration for environment variables
 .env
+
+# Ignore todo
+Todo.txt
