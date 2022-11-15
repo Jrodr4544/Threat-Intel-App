@@ -8,6 +8,13 @@ end
 # Shim to load environment variables from .env into ENV in development.
 gem 'dotenv-rails', groups: [:development, :test]
 
+# Flexible authentication solution for Rails with Warden
+
+gem 'devise'
+
+gem "jsonapi-serializer"
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
 # Use sqlite3 as the database for Active Record
