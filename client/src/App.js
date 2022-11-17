@@ -8,7 +8,7 @@ import {
 }	from 'react-router-dom';
 
 import PulsesContainer from './containers/PulsesContainer';
-import Navigation from './components/Navigation';
+import NavBar from './components/NavBar';
 import About from './components/About';
 import Index from './components/Index';
 import UserProfileContainer from './containers/UserProfileContainer';
@@ -18,11 +18,11 @@ function App() {
     <div className="App">
 
 	  <Router>
-	  <Navigation />
+	  <NavBar />
 	  	<Routes>
 	  		<Route path='/pulses' element={<PulsesContainer />} />
 	  		<Route path='/about' element={<About />} />
-			<Route path='/login' element={<UserProfileContainer/>} />
+			<Route path='/login' element={<UserProfileContainer />} />
 	  		<Route exact path='/' element={<Index />} />
 	  {/* <Route exact path='/' render={() => (
 				<div className='App'><h1>Welcome</h1></div>
