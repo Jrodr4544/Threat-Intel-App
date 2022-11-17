@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import {Link} from 'react-router-dom';
 
-function Navigation() {
+function NavBar() {
 	  return (
 
 		<Navbar bg="dark" variant="dark" expand="lg">
@@ -29,4 +29,4 @@ function Navigation() {
 		    );
 }
 
-export default Navigation;
+export default NavBar;
