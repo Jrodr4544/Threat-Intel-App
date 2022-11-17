@@ -5,7 +5,7 @@ export const fetchPulses = () => {
     function onSuccess(pulses) {
       let filters = {};
       debugger
-	
+
       // Ensuring that there are unique tags only
       filters.tags = pulses.map(pulse =>
         pulse.tags)
@@ -30,7 +30,7 @@ export const fetchPulses = () => {
     }
 
     try {
-      dispatch({ type: 'LOADING_PULSES' }) 
+      dispatch({ type: 'LOADING_PULSES' })
 
       const request = await fetch('http://localhost:3000/api/pulses');
       const pulses = await request.json();
@@ -43,3 +43,49 @@ export const fetchPulses = () => {
 
 }
 
+
+export const login = (creds) => {
+
+  return async dispatch => {
+    function onSuccess(loginResponse) {
+      let filters = {};
+      debugger
+
+      // change filters and pulses to whatever is returned
+      // after successfull login
+      dispatch({ type: 'USER_LOGGED_IN', filters })
+      //  debugger
+      return loginResponse;
+    }
+
+    function onError(error) {
+      debugger
+      dispatch({ type: 'FETCH_ERROR_GENERATED', error });
+      return error;
+    }
+
+    try {
+      dispatch({ type: 'USER_LOGGING_IN' })
+      debugger
+      const request = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({
+            user: {
+              email: creds.email,
+              password: creds.password,
+              password_confirmation: creds.password
+              // Once signup is confirmed to be properly working,
+              // need to implement password confirmation in registration form
+            }
+          })
+      });
+      const loginResponse = await request.json();
+
+      return onSuccess(loginResponse);
+    } catch (error) {
+      return onError(error);
+    }
+  }
+
+}
